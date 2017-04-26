@@ -396,6 +396,8 @@ namespace Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http
             _requestHeadersParsed = 0;
 
             _responseBytesWritten = 0;
+
+            _requestBodyReader.Reset();
         }
 
         /// <summary>
