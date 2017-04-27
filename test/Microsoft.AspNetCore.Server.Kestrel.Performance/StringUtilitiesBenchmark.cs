@@ -11,17 +11,17 @@ namespace Microsoft.AspNetCore.Server.Kestrel.Performance
     {
         private const int Iterations = 500_000;
 
-        [Benchmark(Baseline = true)]
+        [Benchmark(Baseline = true, OperationsPerInvoke = Iterations)]
         public void UintToString()
         {
             var connectionId = CorrelationIdGenerator.GetNextId();
-            for(uint i = 0; i < Iterations; i++)
+            for (uint i = 0; i < Iterations; i++)
             {
                 var id = connectionId + ':' + i.ToString("X8");
             }
         }
 
-        [Benchmark]
+        [Benchmark(OperationsPerInvoke = Iterations)]
         public void ConcatAsHexSuffix()
         {
             var connectionId = CorrelationIdGenerator.GetNextId();
