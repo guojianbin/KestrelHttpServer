@@ -105,16 +105,16 @@ namespace Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure
                 }
             }
 
-            charBuffer[i++] = separator;
+            charBuffer[i] = separator;
 
-            charBuffer[i++] = _encode16Chars[(int)(number >> 28) & 0xF];
-            charBuffer[i++] = _encode16Chars[(int)(number >> 24) & 0xF];
-            charBuffer[i++] = _encode16Chars[(int)(number >> 20) & 0xF];
-            charBuffer[i++] = _encode16Chars[(int)(number >> 16) & 0xF];
-            charBuffer[i++] = _encode16Chars[(int)(number >> 12) & 0xF];
-            charBuffer[i++] = _encode16Chars[(int)(number >> 8) & 0xF];
-            charBuffer[i++] = _encode16Chars[(int)(number >> 4) & 0xF];
-            charBuffer[i++] = _encode16Chars[(int)(number & 0xF)];
+            charBuffer[i + 1] = _encode16Chars[(int)(number >> 28) & 0xF];
+            charBuffer[i + 2] = _encode16Chars[(int)(number >> 24) & 0xF];
+            charBuffer[i + 3] = _encode16Chars[(int)(number >> 20) & 0xF];
+            charBuffer[i + 4] = _encode16Chars[(int)(number >> 16) & 0xF];
+            charBuffer[i + 5] = _encode16Chars[(int)(number >> 12) & 0xF];
+            charBuffer[i + 6] = _encode16Chars[(int)(number >> 8) & 0xF];
+            charBuffer[i + 7] = _encode16Chars[(int)(number >> 4) & 0xF];
+            charBuffer[i + 8] = _encode16Chars[(int)number & 0xF];
 
             // string ctor overload that takes char*
             return new string(charBuffer, 0, length);
